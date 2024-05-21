@@ -109,7 +109,9 @@ public:
         }
         return false;
     };
+
 	//bool compareUserForAutorization(User& user);
+
 	void registration() {
         string newName, newLogin, newPass;
         cout << "Enter your name: ";

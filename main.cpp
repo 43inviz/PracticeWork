@@ -15,8 +15,7 @@ int main()
     if (res) {
         cout << "Autorization done!\n";
         cout << "Welcome back " << user.getName() << endl;
-    }
-    else {
+    } else {
         cout << "try again\n";
     }
 

@@ -32,7 +32,4 @@ void enterMenu() {
 
 	} while (choice != 0);
 
-
-
-
 }
