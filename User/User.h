@@ -2,9 +2,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <utility>
 #include "../Exception.h"
 using namespace std;
-#define FILENAME "users.txt"
+#define FILENAME "../users.txt"
 
 class User {
 	string _userName;
@@ -67,17 +68,17 @@ public:
                 this->setName(userName);
                 this->setLogin(userLogin);
                 this->setPass(userPass);
+
+                fin.close();
             }
-            catch (exception& ex) {
+            catch (const Exceptions& ex) {
                 cout << ex.what() << endl;
+                exit(1);
             }
 
         };
-#include <exception>
-
 	void saveNewUserInFile() {
         try {
-
             ofstream fout;
             fout.open(FILENAME);
             if (!fout.is_open()) {
