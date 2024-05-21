@@ -6,7 +6,6 @@
 using namespace std;
 #define FILENAME "users.txt"
 
-
 class User {
 	string _userName;
 	string _userLogin;

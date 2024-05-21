@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
     srand(time(0));
+
     string name = "Alex Cool";
     string login = "123@gmail.com";
     string pass = "123Alex!";

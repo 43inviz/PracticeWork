@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 void lining(int count) {
 	while (count != 0) {
 		cout << "=";
