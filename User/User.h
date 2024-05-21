@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <exception>
+#include "../Exception.h"
 using namespace std;
 #define FILENAME "users.txt"
 
@@ -56,7 +56,7 @@ public:
                 ifstream fin;
                 fin.open(FILENAME);
                 if (!fin.is_open()) {
-                    throw "User.txt cant open for read\n";
+                    throw Exceptions("User.txt cant open for read\n");
                 }
 
                 string userName, userLogin, userPass;
@@ -81,7 +81,7 @@ public:
             ofstream fout;
             fout.open(FILENAME);
             if (!fout.is_open()) {
-                throw "User.txt cant opend for save\n";
+                throw Exceptions("User.txt cant opend for save\n");
             }
             fout << _userName << "\n";
             fout << _userLogin << "\n";

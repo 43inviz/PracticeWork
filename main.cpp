@@ -11,6 +11,7 @@ int main()
     string login = "123@gmail.com";
     string pass = "123Alex!";
     User user(name, login, pass);
+    user.readUserFromFile();
     bool res = user.autorization();
     if (res) {
         cout << "Autorization done!\n";
