@@ -24,7 +24,7 @@ public:
         return category;
     }
 
-    bool isCardCredit(char type) {
+    bool isCardCredit(int type) {
         if(type) {
             return true;
         } else return false;

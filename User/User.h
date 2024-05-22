@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <utility>
+
 #include "../Exception.h"
 using namespace std;
 #define FILENAME "../users.txt"
@@ -11,15 +11,10 @@ class User {
 	string _userName;
 	string _userLogin;
 	string _userPass;
-
 public:
 
 	User() {};
 	User(string name, string login, string pass) :_userName(name), _userLogin(login), _userPass(pass) {}
-
-	//bool operator==(const User& right);
-
-	/*void enterMenu();*/
 
 	void setName(string name) {
 		_userName = name;
@@ -52,85 +47,11 @@ public:
 		cout << "Pass: " << _userPass << endl;
 	}
 
-	void readUserFromFile() {
-            try {
-                ifstream fin;
-                fin.open(FILENAME);
-                if (!fin.is_open()) {
-                    throw Exceptions(const_cast<char*>("User.txt cant open for read\n"));
-                }
+	void readUserFromFile();
+	void saveNewUserInFile();
 
-                string userName, userLogin, userPass;
-                fin >> userName;
-                fin >> userLogin;
-                fin >> userPass;
-
-                this->setName(userName);
-                this->setLogin(userLogin);
-                this->setPass(userPass);
-
-                fin.close();
-            }
-            catch (const Exceptions& ex) {
-                cout << ex.what() << endl;
-                exit(1);
-            }
-
-        };
-	void saveNewUserInFile() {
-        try {
-            ofstream fout;
-            fout.open(FILENAME);
-            if (!fout.is_open()) {
-                throw Exceptions(const_cast<char*>("User.txt cant opend for save\n"));
-            }
-            fout << _userName << "\n";
-            fout << _userLogin << "\n";
-            fout << _userPass << "\n";
-            fout.close();
-        }
-        catch (exception& ex) {
-            cout << ex.what() << endl;
-        }
-    };
-
-	bool autorization() {
-        string userLogin;
-        string userPass;
-
-        User compareUser;
-
-        cout << "Enter your login: ";
-        getline(cin, userLogin);
-        cout << "Enter your password: ";
-        getline(cin, userPass);
-
-        if (this->_userLogin == userLogin || this->_userPass == userPass) {
-            return true;
-        }
-        return false;
-    };
-
-	//bool compareUserForAutorization(User& user);
-
-	void registration() {
-        string newName, newLogin, newPass;
-        cout << "Enter your name: ";
-        getline(cin, newName);
-        cout << "Enter your Phone or E-Mail(will be used as login): ";
-        getline(cin, newLogin);
-        cout << "Create password: ";
-        getline(cin, newPass);
-
-        this->setName(newName);
-        this->setLogin(newLogin);
-        this->setLogin(newPass);
-
-        this->saveNewUserInFile();
-
-    };
-
-	/*bool isExistingUser();*/
+	bool autorization();
+	void registration();
 
     void enter() {
         int choice;
@@ -141,7 +62,9 @@ public:
 
         switch (choice)
         {
+		
             case 1:
+
                 break;
             case 2:
                 registration();
