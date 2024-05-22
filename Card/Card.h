@@ -16,12 +16,10 @@ class Card :public User {
 public:
 	Card() {};
 	Card(string name, string login, string pass, int type) :User(name, login, pass), _type(type),_currentBalance(0) {
-		
+			
 		for (int i = 0; i < 10; i++) {
 			_cardNumber.push_back(rand() % 9);
 		}
-
-		
 	}
 
 	void setBalance(double balance) { _currentBalance = balance; }
