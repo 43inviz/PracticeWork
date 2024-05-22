@@ -9,23 +9,25 @@ using namespace std;
 
 class Card :public User {
 
-	string _cardNumber;
+	vector<int> _cardNumber;
 	double _currentBalance;
 	vector<Purchase> _purVec;
 	int _type;
 public:
 	Card() {};
 	Card(string name, string login, string pass, int type) :User(name, login, pass), _type(type),_currentBalance(0) {
-			
+		
 		for (int i = 0; i < 10; i++) {
-			_cardNumber[i] = rand() % 9;
+			_cardNumber.push_back(rand() % 9);
 		}
+
+		
 	}
 
 	void setBalance(double balance) { _currentBalance = balance; }
 	void setType(int type) { _type = type; }
 
-	string getCardNumber() const { return _cardNumber; }
+	vector<int> getCardNumber() const { return _cardNumber; }
 	double getBalance() const { return _currentBalance; }
 	int getType() const { return _type; }
 
