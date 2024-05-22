@@ -13,6 +13,17 @@ private:
     string category;
 public:
     Purchase(double price, Date date, string category) : price(price), date(date), category(category) {}
+
+    double getPrice() {
+        return price;
+    }
+    Date getDate() {
+        return date;
+    }
+    string getCategory() {
+        return category;
+    }
+
     bool isCardCredit(char type) {
         if(type) {
             return true;
@@ -29,17 +40,17 @@ public:
         } else return true;
     };
 
-    Purchase* addPurchase() {
+    Purchase* addPurchase(int type, double creditBalance, double balance) {
         if (isCardCredit(type)) {
             if (isCreditBalance(creditBalance)) {
                 creditBalance -= this->price;              //отнять от кредитного баланса
                 return this;
-            } else throw Exceptions("Кредитний ліміт вичерпано!\n");
+            } else throw Exceptions(const_cast<char*>("Кредитний ліміт вичерпано!\n"));
         } else {
             if(isBalanceValid(balance)) {
                 balance -= this->price;                    // отнять от баланса
                 return this;
-            } else throw Exceptions("Недостатньо коштів!");
+            } else throw Exceptions(const_cast<char*>("Недостатньо коштів!"));
         }
     };
 };

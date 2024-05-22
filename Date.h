@@ -39,10 +39,20 @@ public:
             return;
         }
 
-        if (this->day < 1 || this->day > 31) {
+        if (this->day < 0 || this->day > 31) {
             cout << "Помилка: Невалідний день" << endl;
             return;
         }
+    }
+
+    int getDay() {
+        return day;
+    }
+    int getMonth() {
+        return month;
+    }
+    int getYear() {
+        return year;
     }
 };
 
