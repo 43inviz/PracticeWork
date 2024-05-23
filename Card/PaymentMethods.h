@@ -19,7 +19,13 @@ public:
 		}
 	}
 
-	virtual void show() = 0;
+	virtual void show() {
+
+		User::showUser();
+		cout << "Card number: ";
+ 		showCardNumber();
+		cout << "Current balance: " << _currentBalance << endl;
+	}
 	virtual void addMoney() = 0;
 	virtual void takeMoney() = 0;
 

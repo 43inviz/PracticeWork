@@ -4,6 +4,7 @@ double CreditCard::_creditLimit = 10000.0;
 
 void CreditCard::show()
 {
+	User::showUser();
 	Card::show();
 	cout << "Current credit balance: " << _currentCreditBalance << endl;
 	cout << "Credit limit: " << _creditLimit << endl;
@@ -22,7 +23,7 @@ void CreditCard::addMoney()
 		sum -= diff;
 	}
 	addMoneyOnBalance(sum);
-	cout << "Add monaye done\n";
+	cout << "Add money done\n";
 	
 }
 

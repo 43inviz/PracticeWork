@@ -22,7 +22,7 @@ void Card::addSpend()
 
 void Card::show()
 {
-	User::show();
+	User::showUser();
 	cout << "Type: " << _type << endl;
 	cout << "Current balance: " << this->getCurrentBalance() << endl;
 	cout << "Card number: ";

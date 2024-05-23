@@ -42,12 +42,12 @@ public:
 		return _userPass;
 	}
 
-	void show() {
+
+	void showUser() {
 		cout << "Name: " << _userName << endl;
 		cout << "Login: " << _userLogin << endl;
 		cout << "Pass: " << _userPass << endl;
 	}
-
 	void readUserFromFile();
 	void saveNewUserInFile();
 
