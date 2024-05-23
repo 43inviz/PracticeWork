@@ -5,6 +5,7 @@ void Card::addSpend()
 	Date date;
 	double price;
 	string category;
+
 	cout << "Enter price: ";
 	cin >> price;
 	cout << endl;
@@ -13,31 +14,42 @@ void Card::addSpend()
 	date.inputDate();
 
 	cout << "Enter category: ";
-	getline(cin, category);	
+	getline(cin, category);
 	Purchase pur(price, date, category);
-	_purVec.push_back(pur);
 
-	//_purVec.push_back()
+	setPurInVec(pur);
+}
+
+void Card::show()
+{
+	User::show();
+	cout << "Type: " << _type << endl;
+	cout << "Current balance: " << this->getCurrentBalance() << endl;
+	cout << "Card number: ";
+	Payment::showCardNumber();
+}
+
+void Card::takeMoney()
+{
+	double withSum;
+	cout << "Enter with sum: ";
+	cin >> withSum;
+	withDrawMoneyFromBalance(withSum);
 }
 
 void Card::addMoney()
 {
-	double inputSum;
-	cout << "Enter the amount of funds to deposit: ";
-	cin >> inputSum;
-	this->addSumOnBal(inputSum);
-	cout << "Funds deposited successfully\n";
-}
-;
-void Card::addSumOnBal(double sum)
-{
-	_currentBalance += sum;
+	double addSum;
+	cout << "Enter input sum: ";
+	cin >> addSum;
+	this->addMoneyOnBalance(addSum);
+	cout << "Done\n";
 }
 
 void Card::showReport()
 {
 	Reports rep;
 	rep.reportSetup();
-	rep.showReport(_purVec);
-
+	rep.showReport(getPurchaseVector());
 }
+
