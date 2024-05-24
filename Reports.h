@@ -16,7 +16,7 @@ public:
     Reports() = default;
 
     void reportSetup() {
-        Date datenew; // -- clear data
+        Date datenew{}; // -- clear data
         date = datenew; // -- clear data
         _category = ""; // -- clear data
         isWeek = false; // -- clear data
@@ -66,65 +66,65 @@ public:
 //    Date date;
 //    string category;
 
-    void showReport(vector<Purchase> arr) {
+    void showReport(const vector<Purchase>& arr) {
         if (_type == 1) { // without category
             if (!date.getDay()) { // month reports
-                for (int i = 0; i < arr.size(); ++i) {
-                    if (arr[i].getDate().getYear() == date.getYear() && arr[i].getDate().getMonth() == date.getMonth()) {
-                        cout << arr[i].getDate().showDate(); // out date;
-                        cout << arr[i].getPrice(); // out price
-                        cout << arr[i].getCategory(); // out category
+                for (Purchase el : arr) {
+                    if (el.getDate().getYear() == date.getYear() && el.getDate().getMonth() == date.getMonth()) {
+                        cout << el.getDate().showDate(); // out date;
+                        cout << el.getPrice(); // out price
+                        cout << el.getCategory(); // out category
                         cout << endl;
                     }
                 }
             } else if (isWeek) { // week reports
-                for (int i = 0; i < arr.size(); ++i) { // костыль? да! У меня просто не на столько много времени чтобы сделать как нужно
-                    if (arr[i].getDate().getYear() == date.getYear() && arr[i].getDate().getMonth() == date.getMonth() && arr[i].getDate().getDay() == date.getDay()
-                    && arr[i].getDate().getDay() == date.getDay()+1 && arr[i].getDate().getDay() == date.getDay()+2 && arr[i].getDate().getDay() == date.getDay()+3
-                    && arr[i].getDate().getDay() == date.getDay()+4 && arr[i].getDate().getDay() == date.getDay()+5 && arr[i].getDate().getDay() == date.getDay()+6) {
-                        cout << arr[i].getDate().showDate(); // out date;
-                        cout << arr[i].getPrice(); // out price
-                        cout << arr[i].getCategory(); // out category
+                for (Purchase el : arr) { // костыль? да! У меня просто не на столько много времени чтобы сделать как нужно
+                    if (el.getDate().getYear() == date.getYear() && el.getDate().getMonth() == date.getMonth() && el.getDate().getDay() == date.getDay()
+                    && el.getDate().getDay() == date.getDay()+1 && el.getDate().getDay() == date.getDay()+2 && el.getDate().getDay() == date.getDay()+3
+                    && el.getDate().getDay() == date.getDay()+4 && el.getDate().getDay() == date.getDay()+5 && el.getDate().getDay() == date.getDay()+6) {
+                        cout << el.getDate().showDate(); // out date;
+                        cout << el.getPrice(); // out price
+                        cout << el.getCategory(); // out category
                         cout << endl;
                     }
                 }
             } else { // day reports
-                for (int i = 0; i < arr.size(); ++i) {
-                    if (arr[i].getDate().getYear() == date.getYear() && arr[i].getDate().getMonth() == date.getMonth() && arr[i].getDate().getDay() == date.getDay()) {
-                        cout << arr[i].getDate().showDate(); // out date;
-                        cout << arr[i].getPrice(); // out price
-                        cout << arr[i].getCategory(); // out category
+                for (Purchase el : arr) {
+                    if (el.getDate().getYear() == date.getYear() && el.getDate().getMonth() == date.getMonth() && el.getDate().getDay() == date.getDay()) {
+                        cout << el.getDate().showDate(); // out date;
+                        cout << el.getPrice(); // out price
+                        cout << el.getCategory(); // out category
                         cout << endl;
                     }
                 }
             }
         } else if (_type == 0) { // with category
             if (!date.getDay()) {
-                for (int i = 0; i < arr.size(); ++i) {
-                    if (arr[i].getDate().getYear() == date.getYear() && arr[i].getDate().getMonth() == date.getMonth() && arr[i].getCategory() == _category) {
-                        cout << arr[i].getDate().showDate(); // out date;
-                        cout << arr[i].getPrice(); // out price
-                        cout << arr[i].getCategory(); // out category
+                for (Purchase el : arr) {
+                    if (el.getDate().getYear() == date.getYear() && el.getDate().getMonth() == date.getMonth() && el.getCategory() == _category) {
+                        cout << el.getDate().showDate(); // out date;
+                        cout << el.getPrice(); // out price
+                        cout << el.getCategory(); // out category
                         cout << endl;
                     }
                 }
             } else if (isWeek) {
-                for (int i = 0; i < arr.size(); ++i) { // костыль? да! У меня просто не на столько много времени чтобы сделать как нужно
-                    if (arr[i].getDate().getYear() == date.getYear() && arr[i].getDate().getMonth() == date.getMonth() && arr[i].getDate().getDay() == date.getDay()
-                        && arr[i].getDate().getDay() == date.getDay()+1 && arr[i].getDate().getDay() == date.getDay()+2 && arr[i].getDate().getDay() == date.getDay()+3
-                        && arr[i].getDate().getDay() == date.getDay()+4 && arr[i].getDate().getDay() == date.getDay()+5 && arr[i].getDate().getDay() == date.getDay()+6 && arr[i].getCategory() == _category) {
-                        cout << arr[i].getDate().showDate(); // out date;
-                        cout << arr[i].getPrice(); // out price
-                        cout << arr[i].getCategory(); // out category
+                for (Purchase el : arr) { // костыль? да! У меня просто не на столько много времени чтобы сделать как нужно
+                    if (el.getDate().getYear() == date.getYear() && el.getDate().getMonth() == date.getMonth() && el.getDate().getDay() == date.getDay()
+                        && el.getDate().getDay() == date.getDay()+1 && el.getDate().getDay() == date.getDay()+2 && el.getDate().getDay() == date.getDay()+3
+                        && el.getDate().getDay() == date.getDay()+4 && el.getDate().getDay() == date.getDay()+5 && el.getDate().getDay() == date.getDay()+6 && el.getCategory() == _category) {
+                        cout << el.getDate().showDate(); // out date;
+                        cout << el.getPrice(); // out price
+                        cout << el.getCategory(); // out category
                         cout << endl;
                     }
                 }
             } else {
-                for (int i = 0; i < arr.size(); ++i) {
-                    if (arr[i].getDate().getYear() == date.getYear() && arr[i].getDate().getMonth() == date.getMonth() && arr[i].getDate().getDay() == date.getDay() && arr[i].getCategory() == _category) {
-                        cout << arr[i].getDate().showDate(); // out date;
-                        cout << arr[i].getPrice(); // out price
-                        cout << arr[i].getCategory(); // out category
+                for (Purchase el : arr) {
+                    if (el.getDate().getYear() == date.getYear() && el.getDate().getMonth() == date.getMonth() && el.getDate().getDay() == date.getDay() && el.getCategory() == _category) {
+                        cout << el.getDate().showDate(); // out date;
+                        cout << el.getPrice(); // out price
+                        cout << el.getCategory(); // out category
                         cout << endl;
                     }
                 }
