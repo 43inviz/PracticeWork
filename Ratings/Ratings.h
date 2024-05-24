@@ -9,10 +9,11 @@ class Ratings {
 private:
     vector<Purchase> result;
 public:
-    void configureRatings(vector<Purchase> arr, Date date, string category, bool isWeek);// type = 0 - spend; 1 - category
+    void configureRatings(vector<Purchase> arr, Date date, string category, bool isWeek);
 
-    void showRating(vector<Purchase> arr, Date date, string category, bool isWeek = false);// type = 0 - spend; 1 - category
-};
+    void showRating(vector<Purchase> arr, Date date, string category = "", bool isWeek = false); // arr - общий вектор покупок, date - запрашивать у пользователя,
+};                                                                                                  // category - если не передана - вывод по прайсу если передана - по категории,
+                                                                                                    // isWeek - запросить у польззователя так же как запрагивали в Purchase
 
 
 #endif //PAPKA_RATINGS_H
