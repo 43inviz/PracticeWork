@@ -70,14 +70,66 @@ void Ratings::configureRatings(vector<Purchase> arr, Date date, string category,
     }
 }
 
+void Ratings::reportSetup(vector<Purchase> arr) {
+    bool _type;
+    Date date{};
+    bool isWeek;
+
+    cout << "Виведення звітів за категоріями або за витратами (категорії - 0, витрати - 1): ";
+    cin >> _type;
+    cout << endl;
+    if (_type == 1) {
+        short choose;
+        cout << "Виводити за неділю (1) або місяць (2): ";
+        cin >> choose;
+        cout << endl;
+        if (choose == 2) {
+            isWeek = false;
+            cout << "Введіть дату (вводіть дату з нульовим днем): ";
+            date.inputDate();
+            cout << endl;
+            showRating(arr, date);
+        } else if (choose == 1) {
+            isWeek = true;
+            cout << "Введіть перший день неділі: ";
+            date.inputDate();
+            cout << endl;
+            showRating(arr, date, "", false);
+        }
+    } else if (_type == 0) {
+        string category;
+        cout << "Введіть категорію: ";
+        cin >> category;
+        cout << endl;
+        short choose;
+        cout << "Виводити за неділю (1) або місяць (2): ";
+        cin >> choose;
+        cout << endl;
+        if (choose == 2) {
+            isWeek = false;
+            cout << "Введіть дату (вводіть дату з нульовим днем): ";
+            date.inputDate();
+            cout << endl;
+            showRating(arr, date, category, isWeek);
+        } else if (choose == 1) {
+            isWeek = true;
+            cout << "Введіть перший день неділі: ";
+            date.inputDate();
+            cout << endl;
+            showRating(arr, date, category, isWeek);
+        }
+    };
+}
+
 void Ratings::showRating(vector<Purchase> arr, Date date, string category, bool isWeek) { // completed // type = 0 - spend; 1 - category
-    if (isWeek) {
-        configureRatings(arr, date, category, isWeek);
-    }
+
+    configureRatings(arr, date, category, isWeek);
+
     if (result.empty()) {
         cout << "Here is no one rating" << endl;
         return;
     }
+
     for (Purchase el : result) {
         cout << "Category: " << el.getCategory() << endl << "Date: "
         << el.getDate().showDate() << endl << "Price: " << el.getPrice() << endl;
