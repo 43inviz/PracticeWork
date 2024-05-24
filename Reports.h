@@ -102,7 +102,7 @@ public:
             if (!date.getDay()) {
                 for (Purchase el : arr) {
                     if (el.getDate().getYear() == date.getYear() && el.getDate().getMonth() == date.getMonth() && el.getCategory() == _category) {
-                        cout << el.getDate().showDate(); // out date;
+                        cout << el.getDate().showDate(); // out date
                         cout << el.getPrice(); // out price
                         cout << el.getCategory(); // out category
                         cout << endl;
