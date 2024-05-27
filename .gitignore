@@ -20,6 +20,5 @@ PracticeWork.vcxproj.filters
 PracticeWork.vcxproj.user
 out
 users.txt
-../CMakeLists.txt
-../CMakePresets.json
+
 
