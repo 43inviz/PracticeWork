@@ -1,6 +1,6 @@
 #pragma once
 #include "../../User/User.h"
-#include "../../Exception.h"
+#include "../../Exceptions/Exception.h"
 #include <iostream>
 #include <string>
 #include <vector>
