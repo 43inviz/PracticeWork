@@ -31,16 +31,16 @@ public:
         return formattedDate;
     }
     void inputDate() {
-        cout << "Введіть дату" << " (день місяць рік): ";
+        cout << "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ" << " (пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ): ";
         cin >> this->day >> this->month >> this->year;
 
         if (this->month < 1 || this->month > 12) {
-            cout << "Помилка: Невалідний місяць" << endl;
+            cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ" << endl;
             return;
         }
 
         if (this->day < 0 || this->day > 31) {
-            cout << "Помилка: Невалідний день" << endl;
+            cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ" << endl;
             return;
         }
     }
@@ -53,6 +53,15 @@ public:
     }
     int getYear() {
         return year;
+    }
+    void setDay(int day) {
+        this->day = day;
+    }
+    void setMonth(int month) {
+        this->month = month;
+    }
+    void setYear(int year) {
+        this->year = year;
     }
 };
 

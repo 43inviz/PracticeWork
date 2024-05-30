@@ -4,11 +4,13 @@
 #include "../../Purchase/Purchase.h"
 #include <vector>
 #include <fstream>
+#include "../../User/User.h"
+#include <string>
 
 class PurchaseFileSyst {
 private:
 public:
-    void saveInFile(vector<Purchase> vector) {
+    void saveInFile(vector<Purchase> vector, string login) {
         try {
             ofstream fout;
             fout.open("../../Purchse.txt", ofstream::app);
@@ -17,9 +19,10 @@ public:
 
             } else {
                 for (Purchase el : vector) {
+                    fout << login << "\n";
                     fout << el.getCategory() << "\n";
                     fout << el.getPrice() << "\n";
-                    fout << el.getDate().getDay() << " " << el.getDate().getMonth() << " " << el.getDate().getYear() << "\n";
+                    fout << el.getDate().getDay() << "\n" << el.getDate().getMonth() << "\n" << el.getDate().getYear() << "\n";
                 }
             }
             fout.close();
@@ -29,7 +32,7 @@ public:
         }
     }
 
-    void loadFromFile(vector<Purchase> vector) {
+    void loadFromFile(vector<Purchase> vector, string login) {
         try {
             ifstream fin;
             fin.open("../../Purchse.txt");
@@ -40,14 +43,23 @@ public:
                 while (!fin.eof()) {
                     double price;
                     Date date;
-                    string category;
+                    string category, fileLogin;
+                    int dateTemp;
 
-                    fin >> price;
-                    date.inputDate();
+                    fin >> fileLogin;
                     fin >> category;
+                    fin >> price;
+                    fin >> dateTemp;
+                    date.setDay(dateTemp);
+                    fin >> dateTemp;
+                    date.setMonth(dateTemp);
+                    fin >> dateTemp;
+                    date.setYear(dateTemp);
 
-                    Purchase copyPurchase(price, date, category);
-                    vector.push_back(copyPurchase);
+                    if (fileLogin != login){
+                        Purchase copyPurchase(price, date, category);
+                        vector.push_back(copyPurchase);
+                    }
                 }
             }
             fin.close();
