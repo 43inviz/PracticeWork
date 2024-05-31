@@ -5,12 +5,12 @@
 class DebetCard :public PaymentSystem {
 public:
 	DebetCard() = default;
-	DebetCard(string cardNumber, string type) :PaymentSystem(cardNumber, type) {}
+	DebetCard(string ownerName, string cardNumber, string type) :PaymentSystem(ownerName, cardNumber, type) {}
+	DebetCard(string ownerName, string cardNumber, string type,double balance) :PaymentSystem(ownerName, cardNumber, type,balance) {}
+
 
 	void show();
 	void addMoneyOnBalance();
 	void withDrawFromBalance();
 
-	/*void savePaymentOnFile();
-	void readPaymentsFromFile(vector<PaymentSystem> vec);*/
 };

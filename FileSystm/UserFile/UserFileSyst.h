@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 #include "../../User/User.h"
 #include "../../Exceptions/Exception.h"
 #include <iostream>
@@ -10,8 +11,8 @@
 using namespace std;
 
 class UserFileSyst {
-	
-	
+
+
 	vector<User> _usersFromFile;
 public:
 	UserFileSyst() {
@@ -23,12 +24,24 @@ public:
 			}
 			else {
 				while (!fin.eof()) {
-					string name, login, pass;
+					string name, login, pass, encr;
+
+					fin >> encr;
 					fin >> name;
 					fin >> login;
 					fin >> pass;
 
+
+
+					vector<int> passVec;
+					for (size_t i = 0; i < encr.size(); i++) {
+						passVec.push_back(encr[i] - '0');
+					}
+					
+		
+
 					User copyUser(name, login, pass);
+					copyUser.setPassVec(passVec);
 					_usersFromFile.push_back(copyUser);
 
 				}
@@ -46,7 +59,7 @@ public:
 	void setUserVector(vector<User> userVec) { _usersFromFile = userVec; }
 
 	void saveNewUserInFile(User& user) {
-		
+
 		try {
 			ofstream fout;
 			fout.open(FILEPATH, ofstream::app);
@@ -55,9 +68,14 @@ public:
 
 			}
 			else {
-				fout << user.getName() << "\n";
-				fout <<	user.getLogin() << "\n";
-				fout << user.getPass() << "\n";
+				vector<int> passVec = user.getPassVec();
+				for (auto i = passVec.begin(); i != passVec.end(); i++) {
+					fout << *i;
+				}
+				fout << "\n";
+				fout <<  user.getName() << "\n";
+				fout <<  user.getLogin() << "\n";
+				fout <<  user.getPass() << "\n";
 				
 			}
 			fout.close();

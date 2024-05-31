@@ -1,6 +1,7 @@
 #ifndef PAPKA_DATE_H
 #define PAPKA_DATE_H
 
+#include "../Exceptions/Exception.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -13,7 +14,7 @@ private:
 public:
     Date() = default;
 
-    string showDate() {
+    void showDate() {
         string formattedDate;
 
         if (this->day < 10) {
@@ -28,19 +29,23 @@ public:
 
         formattedDate += to_string(this->year);
 
-        return formattedDate;
+        cout << formattedDate;
+
+       
     }
+
+
     void inputDate() {
-        cout << "������ ����" << " (���� ����� ��): ";
+        cout << "Enter date: " << "(day month year): ";
         cin >> this->day >> this->month >> this->year;
 
         if (this->month < 1 || this->month > 12) {
-            cout << "�������: ��������� �����" << endl;
+            throw Exceptions(const_cast<char*>("Invalid month."));
             return;
         }
 
         if (this->day < 0 || this->day > 31) {
-            cout << "�������: ��������� ����" << endl;
+            cout << "Invalid day" << endl;
             return;
         }
     }

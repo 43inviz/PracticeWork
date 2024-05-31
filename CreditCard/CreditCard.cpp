@@ -9,7 +9,7 @@ void CreditCard::show()
 	cout << "Card number: " << this->getCardNumber() << endl;
 	cout << "Current balance: " << this->getCurrentBalance() << endl;
 	cout << "Type: " << this->getType() << endl;
-	cout << "Credit balance: " << _creditLimit << endl;
+	cout << "Credit balance: " << this->getCurrentCreditBalance() << endl;
 	cout << "=====\n";
 }
 
@@ -43,14 +43,15 @@ void CreditCard::withDrawFromBalance()
 	double withdrawSum;
 	cout << "Enter with draw sum: ";
 	cin >> withdrawSum;
+
 	if (withdrawSum > this->getCurrentBalance()) {
 		double withDrawFromCreditCard = withdrawSum - this->getCurrentBalance();
 		if (withDrawFromCreditCard <= _currentCreditBalance) {
 			this->withMoneyFromBalance(this->getCurrentBalance());
-			withDrawMoneyFromCredit(withDrawFromCreditCard);
+			this->withDrawMoneyFromCredit(withDrawFromCreditCard);
 		}
 		else {
-			cout << "You don't have that much money in both balance\n";
+			throw Exceptions(const_cast<char*>("You don't have that much money in both balance\n"));
 		}
 
 
